@@ -1,0 +1,11 @@
+.card{
+    color: blue;
+    border: 2px solid black;
+    border-radius: 10px; /*Borde estilo curvo*/
+    width: 300px; /*Ancho*/
+}
+
+#contenedor{
+    display: flex; /*Elementos organizados de manera horizontal*/
+    flex-wrap: wrap; /* Cuando el elemento no tenga espacio automaticamente se desplace de manera vertical */
+}
