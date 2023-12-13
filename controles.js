@@ -1,6 +1,3 @@
-// Importa la función imprimir desde el archivo controles.js
-import { imprimir } from "./controles.js";
-
 // Selecciona el elemento HTML con el id "contenedor" para mostrar los elementos del servidor.
 const areaDeImpresion = document.querySelector('#contenedor');
 
@@ -12,16 +9,36 @@ export function imprimir(arreglo) {
         <div class="card">
         <h2>${element.rank}</h2>
         <h2>${element.name}</h2>
-        <h2>${element.priceUsd.slice(0, 7)}</h2>
+        <h2>${element.priceUsd.slice(0, 7)}</h2> 
         </div>
         `;
     }).join("");
 }
 
-// Llama a la función "saludar".
-saludar();
 
-// Define la función "saludar" que muestra un mensaje en la consola.
-function saludar() {
-    console.log('saludar');
+export function graficar(arreglo){
+    const ctx = document.getElementById('myChart');
+
+    
+    const labels = arreglo.map(element => element.id)
+    const info = arreglo.map(element => element.priceUsd)
+
+    new Chart(ctx, {
+        type: 'pie',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Ranking Crypto',
+            data: info,
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
 }
